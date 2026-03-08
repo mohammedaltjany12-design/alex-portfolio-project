@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Styles- Portfolio</title>
+    <style>
+        /* ========== CSS Reset & Root Variables ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
+            --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-family-accent: 'Georgia', serif;
+        }
+
+        /* ========== Typography ========== */
+        body {
+            font-family: var(--font-family-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-family: var(--font-family-accent);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-family: var(--font-family-accent);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* ========== Layout & Structure ========== */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            font-weight: 600;
+            transition: color var(--transition-speed) ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* ========== About Section ========== */
+        #about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            margin-top: 0;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background-color: var(--light-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            border-left-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ========== Portfolio Section ========== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all var(--transition-speed) ease;
+            cursor: pointer;
+            animation: slideUp 0.6s ease-out both;
+        }
+
+        .portfolio-item:nth-child(1) { animation-delay: 0s; }
+        .portfolio-item:nth-child(2) { animation-delay: 0.1s; }
+        .portfolio-item:nth-child(3) { animation-delay: 0.2s; }
+        .portfolio-item:nth-child(4) { animation-delay: 0.3s; }
+        .portfolio-item:nth-child(5) { animation-delay: 0.4s; }
+        .portfolio-item:nth-child(6) { animation-delay: 0.5s; }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            transition: opacity var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item:hover .portfolio-thumbnail {
+            opacity: 0.9;
+        }
+
+        .portfolio-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.6s ease;
+        }
+
+        .portfolio-item:hover .portfolio-thumbnail::after {
+            left: 100%;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .view-project {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all var(--transition-speed) ease;
+            border: 2px solid var(--secondary-color);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .view-project:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateX(3px);
+            box-shadow: 0 6px 12px rgba(231, 76, 60, 0.2);
+        }
+
+        .view-project:active {
+            transform: translateX(1px) scale(0.98);
+        }
+
+        /* ========== Tooltips ========== */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+            pointer-events: none;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--primary-color) transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* ========== Modal ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%;
+            overflow: hidden;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: white;
+        }
+
+        .modal-header h2::after {
+            content: none;
+        }
+
+        .close-btn {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .modal-body h3 {
+            color: var(--primary-color);
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            background-color: var(--light-bg);
+            text-align: right;
+            border-top: 1px solid #ddd;
+        }
+
+        .modal-footer .btn-project {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-speed) ease;
+            margin-left: 0.5rem;
+        }
+
+        .modal-footer .btn-project:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .modal-footer .btn-close-modal {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--text-light);
+        }
+
+        .modal-footer .btn-close-modal:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        /* ========== Contact Section ========== */
+        .contact-container {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--light-bg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-family-main);
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        /* ========== Footer ========== */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ========== Animations ========== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* ========== Responsive Design ========== */
+        
+        /* ========== DESKTOP (min-width: 1025px) ========== */
+        @media (min-width: 1025px) {
+            main {
+                max-width: 1200px;
+                padding: 3rem 2rem;
+            }
+
+            #about {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .skills-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            nav ul {
+                gap: 2rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-container {
+                max-width: 600px;
+                margin: 2rem auto;
+            }
+        }
+
+        /* ========== TABLET (769px to 1024px) ========== */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+            }
+
+            header {
+                padding: 3rem 1.5rem;
+            }
+
+            main {
+                max-width: 100%;
+                padding: 2.5rem 1.5rem;
+            }
+
+            #about {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .about-image {
+                height: 280px;
+            }
+
+            .skills-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .portfolio-item {
+                animation: slideUp 0.6s ease-out both;
+            }
+
+            .portfolio-thumbnail {
+                height: 160px;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            nav a {
+                font-size: 0.95rem;
+            }
+
+            .contact-container {
+                max-width: 550px;
+                margin: 2rem auto;
+            }
+
+            .form-group {
+                margin-bottom: 1.25rem;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                padding: 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            .btn-submit {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ========== MOBILE (max-width: 768px) ========== */
+        @media (max-width: 768px) {
+            /* Typography Adjustments */
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.3rem;
+                letter-spacing: -0.3px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            h2::after {
+                width: 40px;
+                height: 3px;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.4rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 0.8rem;
+            }
+
+            /* Header */
+            header {
+                padding: 2rem 1rem;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            }
+
+            header h1 {
+                color: white;
+                font-size: 1.75rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+                max-width: 100%;
+            }
+
+            /* Navigation */
+            nav {
+                padding: 0.75rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            nav ul {
+                display: flex;
+                justify-content: space-around;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                padding: 0 0.5rem;
+                list-style: none;
+            }
+
+            nav a {
+                color: white;
+                font-weight: 600;
+                font-size: 0.85rem;
+                padding: 0.5rem 0.75rem;
+            }
+
+            /* Main Layout */
+            main {
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 1.5rem 1rem;
+            }
+
+            section {
+                margin-bottom: 3rem;
+            }
+
+            /* About Section */
+            #about {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                align-items: stretch;
+            }
+
+            .about-content {
+                order: 2;
+            }
+
+            .about-content h2 {
+                margin-top: 0;
+            }
+
+            .about-image {
+                order: 1;
+                width: 100%;
+                height: 250px;
+                font-size: 3rem;
+                border-radius: var(--border-radius);
+            }
+
+            .skills-list {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+                margin-top: 1rem;
+            }
+
+            .skill-tag {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .skill-tag:hover {
+                transform: translateX(3px);
+            }
+
+            /* Portfolio Grid */
+            .portfolio-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .portfolio-item {
+                animation: slideUp 0.6s ease-out both;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            .portfolio-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            }
+
+            .portfolio-thumbnail {
+                height: 150px;
+                font-size: 2.5rem;
+            }
+
+            .portfolio-content {
+                padding: 1.2rem;
+            }
+
+            .portfolio-content h3 {
+                font-size: 1.05rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .portfolio-content p {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .view-project {
+                display: inline-block;
+                padding: 0.4rem 1.2rem;
+                font-size: 0.85rem;
+                font-weight: 600;
+            }
+
+            /* Mobile Modal */
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .modal-header {
+                padding: 1.2rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-footer {
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .modal-footer .btn-project {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
+                padding: 0.75rem 1rem;
+            }
+
+            /* Mobile Tooltips */
+            .tooltip {
+                display: none;
+            }
+
+            /* Contact Section */
+            #contact {
+                text-align: center;
+            }
+
+            #contact p {
+                font-size: 0.9rem;
+            }
+
+            .contact-container {
+                max-width: 100%;
+                margin: 1.5rem auto;
+                padding: 0;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 0.4rem;
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-align: left;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                width: 100%;
+                padding: 0.6rem 0.75rem;
+                font-size: 0.9rem;
+                border: 2px solid var(--light-bg);
+                border-radius: var(--border-radius);
+            }
+
+            input[type="text"]:focus,
+            input[type="email"]:focus,
+            textarea:focus {
+                outline: none;
+                border-color: var(--secondary-color);
+                box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+            }
+
+            textarea {
+                min-height: 120px;
+                font-size: 0.9rem;
+            }
+
+            .btn-submit {
+                width: 100%;
+                padding: 0.85rem;
+                font-size: 0.9rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+                border-radius: var(--border-radius);
+            }
+
+            .btn-submit:hover {
+                transform: translateY(-2px);
+            }
+
+            /* Footer */
+            footer {
+                padding: 1.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about" class="tooltip-container">About Me<span class="tooltip">Learn more about my experience</span></a></li>
+            <li><a href="#portfolio" class="tooltip-container">Portfolio<span class="tooltip">Explore my recent projects</span></a></li>
+            <li><a href="#contact" class="tooltip-container">Contact<span class="tooltip">Get in touch with me</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Alex Styles</h1>
+        <p>Creative Designer & Developer | Crafting Beautiful Digital Experiences</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>
+                    Hello! I'm Alex Styles, a passionate designer and developer with over 5 years of experience 
+                    creating stunning digital experiences. I specialize in web design, UI/UX, and front-end development.
+                </p>
+                <p>
+                    My journey in design started with a simple passion for creating beautiful interfaces. 
+                    Today, I combine creativity with technical expertise to deliver solutions that exceed expectations.
+                </p>
+                <h3>Skills & Expertise</h3>
+                <div class="skills-list">
+                    <div class="skill-tag">UI/UX Design</div>
+                    <div class="skill-tag">Web Design</div>
+                    <div class="skill-tag">HTML & CSS</div>
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">Responsive Design</div>
+                    <div class="skill-tag">Figma</div>
+                </div>
+            </div>
+            <div class="about-image">👨‍💻</div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <p>Here are some of my recent projects showcasing my expertise in design and development.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-project-id="1">
+                    <div class="portfolio-thumbnail">🎨</div>
+                    <div class="portfolio-content">
+                        <h3>Brand Identity Design</h3>
+                        <p>Complete brand identity system including logo, color palette, and guidelines.</p>
+                        <a href="#" class="view-project" onclick="openModal(1); return false;">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-project-id="2">
+                    <div class="portfolio-thumbnail">🌐</div>
+                    <div class="portfolio-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Responsive e-commerce site with modern design and smooth user experience.</p>
+                        <a href="#" class="view-project" onclick="openModal(2); return false;">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-project-id="3">
+                    <div class="portfolio-thumbnail">📱</div>
+                    <div class="portfolio-content">
+                        <h3>Mobile App UI</h3>
+                        <p>iOS and Android mobile app interface design with intuitive navigation.</p>
+                        <a href="#" class="view-project" onclick="openModal(3); return false;">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-project-id="4">
+                    <div class="portfolio-thumbnail">💼</div>
+                    <div class="portfolio-content">
+                        <h3>Corporate Website</h3>
+                        <p>Professional corporate site with portfolio, services, and contact functionality.</p>
+                        <a href="#" class="view-project" onclick="openModal(4); return false;">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-project-id="5">
+                    <div class="portfolio-thumbnail">🎬</div>
+                    <div class="portfolio-content">
+                        <h3>Media Gallery</h3>
+                        <p>Interactive media gallery with advanced filtering and lightbox features.</p>
+                        <a href="#" class="view-project" onclick="openModal(5); return false;">View Project</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-project-id="6">
+                    <div class="portfolio-thumbnail">✨</div>
+                    <div class="portfolio-content">
+                        <h3>Landing Page</h3>
+                        <p>High-converting landing page with smooth animations and clear CTA.</p>
+                        <a href="#" class="view-project" onclick="openModal(6); return false;">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get in Touch</h2>
+            <p style="text-align: center;">
+                Have a project in mind? I'd love to hear about it. Fill out the form below and I'll get back to you as soon as possible.
+            </p>
+            
+            <div class="contact-container">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Project Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What is your project about?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me more about your project..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Details</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-project btn-close-modal" onclick="closeModal()">Close</button>
+                <button class="btn-project" onclick="visitProject()">Visit Project</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Alex Styles. All rights reserved. | Designed with 💙 and built with code.</p>
+    </footer>
+
+    <!-- JavaScript for Interactive Features -->
+    <script>
+        // Project Data for Modal
+        const projectData = {
+            1: {
+                title: 'Brand Identity Design',
+                description: `
+                    <p>This comprehensive brand identity project encompasses the complete visual language for a modern tech startup. The project includes:</p>
+                    <h3>Deliverables:</h3>
+                    <p>• Logo design with multiple variations and applications<br>
+                    • Complete color palette with accessibility guidelines<br>
+                    • Typography system for web and print<br>
+                    • Brand guidelines document<br>
+                    • Marketing collateral templates</p>
+                    <h3>Results:</h3>
+                    <p>The final brand identity successfully elevated the client's market presence, resulting in increased brand recognition and professional credibility. The design system provided consistency across all touchpoints.</p>
+                `,
+                link: '#'
+            },
+            2: {
+                title: 'E-Commerce Platform',
+                description: `
+                    <p>Developed a fully responsive e-commerce platform with seamless user experience and modern design principles. This project showcases best practices in web design and development.</p>
+                    <h3>Key Features:</h3>
+                    <p>• Product catalog with advanced filtering<br>
+                    • Secure shopping cart and checkout<br>
+                    • User account management<br>
+                    • Order tracking system<br>
+                    • Mobile-first responsive design</p>
+                    <h3>Performance:</h3>
+                    <p>The site achieved a 98/100 Lighthouse score with optimized images, lazy loading, and efficient CSS/JavaScript. Mobile conversion rates increased by 45% post-launch.</p>
+                `,
+                link: '#'
+            },
+            3: {
+                title: 'Mobile App UI',
+                description: `
+                    <p>Designed complete user interface for a cross-platform mobile application with focus on usability and visual appeal. The design system ensures consistency across iOS and Android platforms.</p>
+                    <h3>Design Highlights:</h3>
+                    <p>• Intuitive navigation system<br>
+                    • Custom iconography set<br>
+                    • Interactive micro-interactions<br>
+                    • Accessibility compliance (WCAG 2.1 AA)<br>
+                    • Dark mode support</p>
+                    <h3>Impact:</h3>
+                    <p>The app received 4.8-star rating with 100K+ downloads. Users praised the interface for being intuitive and visually appealing, with 95% user retention rate.</p>
+                `,
+                link: '#'
+            },
+            4: {
+                title: 'Corporate Website',
+                description: `
+                    <p>Created a professional corporate website that effectively communicates the brand message while providing excellent user experience. The site serves as the digital headquarters for the organization.</p>
+                    <h3>Website Sections:</h3>
+                    <p>• Company overview and mission statement<br>
+                    • Services showcase with detailed descriptions<br>
+                    • Team profile with bios<br>
+                    • Case studies and success stories<br>
+                    • Contact and inquiry forms</p>
+                    <h3>Business Results:</h3>
+                    <p>The new website generated 200+ qualified leads in the first month, significantly increasing inbound inquiries. Average session duration increased to 4 minutes.</p>
+                `,
+                link: '#'
+            },
+            5: {
+                title: 'Media Gallery',
+                description: `
+                    <p>Built an interactive media gallery web application with advanced features and smooth performance. Perfect for photographers, artists, and creative professionals to showcase their work.</p>
+                    <h3>Features Implemented:</h3>
+                    <p>• Advanced filtering and search functionality<br>
+                    • Lightbox with smooth animations<br>
+                    • Image optimization and lazy loading<br>
+                    • User uploads and management system<br>
+                    • Social sharing integration</p>
+                    <h3>Technical Excellence:</h3>
+                    <p>Built with responsive grid layout, supports high-resolution images, and provides instant filtering without page reload using modern JavaScript techniques.</p>
+                `,
+                link: '#'
+            },
+            6: {
+                title: 'Landing Page',
+                description: `
+                    <p>Designed and developed a high-converting landing page that effectively communicates value proposition and drives user action. Every element is strategically placed for maximum impact.</p>
+                    <h3>Optimization:</h3>
+                    <p>• Clear and compelling headline<br>
+                    • Benefit-focused copy<br>
+                    • Strategic call-to-action buttons<br>
+                    • Social proof elements<br>
+                    • Smooth scroll animations</p>
+                    <h3>Performance Metrics:</h3>
+                    <p>Achieved a 12% conversion rate, 35% above industry average. Page load time optimized to under 2 seconds, with perfect mobile responsiveness.</p>
+                `,
+                link: '#'
+            }
+        };
+
+        // Modal Functions
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const projectInfo = projectData[projectId];
+            
+            if (projectInfo) {
+                document.getElementById('modalTitle').textContent = projectInfo.title;
+                document.getElementById('modalBody').innerHTML = projectInfo.description;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function visitProject() {
+            alert('Thank you for your interest! This would navigate to the project details page.');
+        }
+
+        // Close modal when clicking outside the modal content
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form validation and submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                if (name && email && subject && message) {
+                    alert(`Thank you, ${name}! Your message has been sent successfully. I'll get back to you soon at ${email}`);
+                    form.reset();
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
